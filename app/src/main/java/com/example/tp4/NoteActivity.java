@@ -45,7 +45,7 @@ public class NoteActivity extends AppCompatActivity implements TextToSpeech.OnIn
         textToSpeechButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(),noteContent,Toast.LENGTH_LONG).show();
+                //Toast.makeText(v.getContext(),noteContent,Toast.LENGTH_LONG).show();
                 textToSpeech.speak("your note contains: "+noteContent+"it was created at:"+date, TextToSpeech.QUEUE_FLUSH, null);
                 currentPosition=0;
             }
