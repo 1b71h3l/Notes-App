@@ -5,5 +5,5 @@
         android:id="@+id/add_note"
         android:title="Ajouter une note"
         app:showAsAction="always"
-        android:icon="@drawable/add" />
+        android:icon="@drawable/addnote" />
 </menu>

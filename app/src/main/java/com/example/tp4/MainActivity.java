@@ -31,22 +31,19 @@ public class MainActivity extends AppCompatActivity implements NotesAdapter.OnNo
     private RecyclerView recyView;
     List<Note> notes = new ArrayList<Note>();
     private SharedPreferences sharedPreferences;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        recyView = (RecyclerView) findViewById(R.id.recyclerView);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_note:
 
-        sharedPreferences = getSharedPreferences("notes", Context.MODE_PRIVATE);
-
-        FloatingActionButton addNote = (FloatingActionButton) findViewById(R.id.add_note);
-
-        addNote.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("Add a new note");
+                builder.setIcon(android.R.drawable.ic_input_add);
                 LayoutInflater inflater = getLayoutInflater();
                 View view = inflater.inflate(R.layout.add_note, null);
                 builder.setView(view);
@@ -65,8 +62,21 @@ public class MainActivity extends AppCompatActivity implements NotesAdapter.OnNo
                     }
                 });
                 builder.show();
-            }
-        });
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }}
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        recyView = (RecyclerView) findViewById(R.id.recyclerView);
+
+        sharedPreferences = getSharedPreferences("notes", Context.MODE_PRIVATE);
+
         retrieveNotes();
         recyView.setLayoutManager(new LinearLayoutManager(this));
         recyView.setAdapter(new NotesAdapter(notes,MainActivity.this,this, this));
@@ -96,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements NotesAdapter.OnNo
     public void onNoteLongClick(int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Delete note");
+        builder.setIcon(android.R.drawable.ic_dialog_alert);
         builder.setMessage("Are you sure you want to delete this note?");
         builder.setNegativeButton("Cancel", null);
         builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
@@ -113,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements NotesAdapter.OnNo
     public void showModifyDialog(Note note, int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Edit note");
+        builder.setIcon(android.R.drawable.ic_menu_edit);
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.edit_note, null);
         EditText Title = view.findViewById(R.id.edit_title);

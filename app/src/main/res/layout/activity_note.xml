@@ -40,8 +40,8 @@
         android:padding="16dp"
         android:text="Date"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/text_to_speech_button"
+        app:layout_constraintTop_toBottomOf="@+id/note_content"
         app:layout_constraintVertical_bias="0.5"
         tools:layout_editor_absoluteX="-16dp" />
 
@@ -63,7 +63,7 @@
         android:id="@+id/text_to_speech_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Read out loud"
+        android:text="Read the note out loud 🔊"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

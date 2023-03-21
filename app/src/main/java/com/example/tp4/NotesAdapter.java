@@ -40,7 +40,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NoteViewHolder> {
             @Override
             public void onClick(View v) {
                 Note note = mData.get(position);
-                Toast.makeText(v.getContext(),"edit mee ",Toast.LENGTH_LONG).show();
+                //Toast.makeText(v.getContext(),"edit mee ",Toast.LENGTH_LONG).show();
                 onNoteModifyClickListener.showModifyDialog(note, position);
             }
         });
